@@ -1,7 +1,7 @@
 def pipelineContext = [:]
 node {
 
-   def registryProjet='registry.gitlab.com/xavki/presentations-jenkins'
+   def registryProjet='ghcr.io/boumhamdifatima/jbuild'
 	 def IMAGE="${registryProjet}:version-${env.BUILD_ID}"
 
 	 echo "IMAGE = $IMAGE"
@@ -21,7 +21,7 @@ node {
 		}
 
 		stage('Push') {
-					docker.withRegistry('https://registry.gitlab.com', 'reg1') {
+					docker.withRegistry('https://ghcr.io', 'registrygithub') {
 							img.push 'latest'
               img.push()
 					}
